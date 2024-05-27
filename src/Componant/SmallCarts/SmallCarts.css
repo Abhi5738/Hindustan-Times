@@ -1,0 +1,29 @@
+.smallBanner {
+  margin-top: 20px;
+  padding: 15px;
+  box-shadow: 0px 1px 2px 3px rgb(220, 222, 223);
+  background-color: white;
+  display: flex;
+}
+
+.smallBanner:hover {
+  box-shadow: 0px 1px 5px 4px rgb(220, 222, 223);
+}
+
+.smallBannerPublished {
+  margin-top: 30px;
+}
+
+.indiaNews {
+  cursor: pointer;
+}
+
+.smallBannerHeading p {
+  font-size: 25px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.smallBannerHeading p:hover {
+  text-decoration: underline;
+}

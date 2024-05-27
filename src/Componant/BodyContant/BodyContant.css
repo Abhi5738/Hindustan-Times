@@ -1,0 +1,217 @@
+.bodyContentContainer {
+  margin-top: 10px;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 4fr 1fr;
+  column-gap: 10px; */
+  display: flex;
+  gap: 10px;
+  background-color: rgb(248, 242, 242);
+}
+
+.bodyContentContainerLeft {
+}
+
+.latestNews {
+  box-shadow: 0px 1px 2px 3px rgb(220, 222, 223);
+  padding: 7px 7px 7px 7px;
+  /* width: 170px; */
+  background-color: white;
+}
+
+.bodyContentContainerLeft .latestHeading p {
+  font-size: 17px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.latestHeading p span {
+  color: #00b1cd;
+}
+
+.latestHeading P {
+  text-align: center;
+}
+
+.viewAllBtn button {
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+  color: #00b1cd;
+  background-color: white;
+  cursor: pointer;
+
+  align-items: center;
+}
+
+.btnArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.btnArrow ion-icon {
+  color: #00b1cd;
+  cursor: pointer;
+}
+
+.mostRead {
+  margin-top: 15px;
+  box-shadow: 0px 1px 2px 3px rgb(220, 222, 223);
+  padding: 7px 7px 7px 7px;
+  /* width: 170px; */
+  background-color: white;
+}
+
+.latestHeading p {
+  margin-bottom: 13px;
+}
+
+.bodyContentContainerCenter {
+  background-color: #f8f6f6;
+  padding: 10px;
+  box-shadow: 0px 1px 2px 3px rgb(220, 222, 223);
+}
+.runningHeading {
+  margin-top: 20px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  width: 500px;
+  height: 40px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-left: 220px;
+}
+
+.runningHeading button {
+  padding: 10px;
+  border: none;
+  background-color: red;
+  outline: none;
+  color: white;
+  border-radius: 40px;
+  width: 95px;
+  height: 40px;
+  font-size: 25px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+
+.topNewsHeading p span {
+  color: #00b1cd;
+}
+
+.topNewsHeading p {
+  font-weight: 800;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 35px;
+}
+
+.arvindImg {
+  margin-top: 10px;
+}
+
+.arvindImg img {
+  border-radius: 7px;
+  width: 900px;
+  height: 400px;
+}
+
+.bodyContentContainerRight {
+  background-color: #f8f6f6;
+  padding: 10px;
+  box-shadow: 0px 1px 2px 3px rgb(220, 222, 223);
+}
+
+.bodyContainerRightHindustanImage img {
+  width: 286px;
+  margin-bottom: 10px;
+}
+
+.htPremiumeContantTitle {
+  line-height: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.htPremiumeContantImg img {
+  width: 286px;
+  border-radius: 5px;
+}
+
+.htPremiumeBigContant {
+  margin-top: 15px;
+  display: flex;
+}
+
+.htPreminmeBigTitle p {
+  font-size: 11px;
+}
+
+.htPreminmeBigImg img {
+  width: 85px;
+}
+
+.htPremiumeHeader p {
+  margin-top: 20px;
+}
+
+.vieAllBtn {
+  margin-top: 10px;
+}
+
+.shopNowNavbar ul {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 13px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.shopNowNavbar ul :hover {
+  color: blue;
+}
+
+.product {
+  margin-top: 20px;
+  display: flex;
+}
+
+.productImg img {
+  height: 100px;
+}
+
+.productDetails {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+  color: gray;
+}
+.productDetails button {
+  cursor: pointer;
+  margin-top: 3px;
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: #00b1cd;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+
+/* @media screen and (max-width: 800px) {
+  .bodyContentContainerLeft {
+    display: none;
+  }
+  .bodyContentContainerRight {
+    display: none;
+  }
+} */

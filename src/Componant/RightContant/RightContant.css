@@ -1,0 +1,27 @@
+.htPremiumeContantTitle {
+  line-height: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.htPremiumeContantImg Image {
+  width: 286px;
+  border-radius: 5px;
+}
+
+.htPremiumeBigContant {
+  margin-top: 15px;
+  display: flex;
+}
+
+.htPremiumeBigTitle p {
+  font-size: 11px;
+}
+
+.htPremiumeBigImg Image {
+  width: 85px;
+}
+
+.htPremiumeHeader p {
+  margin-top: 20px;
+}

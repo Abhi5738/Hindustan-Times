@@ -1,0 +1,38 @@
+.indiaNewsHeading {
+  margin-bottom: 10px;
+}
+.indiaNewsHeading p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #00b1cd;
+  font-weight: 500;
+}
+
+.indiaNewsContent p {
+  font-size: 13px;
+  font-weight: 450;
+  line-height: 17px;
+}
+
+.indiaNewsContentPublish {
+  color: gray;
+  margin-top: 10px;
+}
+
+hr {
+  margin-top: 13px;
+  width: 260px;
+  margin-bottom: 13px;
+}
+
+/* .mostRead {
+  margin-top: 15px;
+  box-shadow: 0px 1px 2px 3px rgb(220, 222, 223);
+  padding: 7px 7px 7px 7px;
+  width: 170px;
+  background-color: white;
+}
+
+.latestHeading p {
+  margin-bottom: 13px;
+} */

@@ -1,0 +1,30 @@
+.product {
+  margin-top: 20px;
+  display: flex;
+}
+
+.productImg Image {
+  /* height: 100px;
+  width: 100px; */
+}
+
+.productDetails {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.productDetails button {
+  cursor: pointer;
+  margin-top: 3px;
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: #00b1cd;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+  color: gray;
+}
