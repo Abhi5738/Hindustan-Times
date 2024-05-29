@@ -10,7 +10,7 @@ const page = () => {
     password: "",
     email: "",
   });
-
+  console.log("djsgk");
   return (
     <>
       <div className="loginsignup">
