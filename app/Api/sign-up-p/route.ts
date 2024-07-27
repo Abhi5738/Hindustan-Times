@@ -3,8 +3,6 @@ import signUp from "../../../models-sign-up/post";
 import { NextResponse } from "next/server";
 import bcryptjs from "bcryptjs"; // This Library is used to change real password into hashing form
 
-import jwt from "jsonwebtoken";
-
 export async function POST(req: any) {
   const body = await req.json();
 
@@ -13,12 +11,11 @@ export async function POST(req: any) {
 
     const { username, email, password } = body;
 
-    const userEmail = await signUp.findOne({ email });
+    const userData = await signUp.findOne({ email });
 
-    if (userEmail) {
+    if (userData) {
       return NextResponse.json(
         { error: "User already exists" },
-
         { status: 400 }
       );
     }
@@ -43,27 +40,29 @@ export async function POST(req: any) {
 
     await data.save();
 
-    const tokenData = {
-      id: data._id,
-    };
+    // const tokenData = {
+    //   id: data._id,
+    // };
 
-    const token = await jwt.sign({ tokenData }, "mysecretkeyisthi");
+    // const token = await jwt.sign({ tokenData }, "mysecretkey");
 
-    const response = NextResponse.json({
-      msg: "SignUp SuccessFully",
+    // const response = NextResponse.json({
+    //   msg: "SignUp SuccessFully",
 
-      success: true,
+    //   success: true,
 
-      token,
-    });
+    //   token,
+    // });
 
-    // Set cookies
+    // // Set cookies
 
-    response.cookies.set("token", token, { httpOnly: true });
+    // response.cookies.set("token", token, { httpOnly: true });
 
-    if (response) {
-      return response;
-    }
+    // if (response) {
+    //   return response;
+    // }
+
+    return NextResponse.json({ msg: " SuccessFully " }, { status: 200 });
   } catch (error) {
     console.log(
       "This error is a POST req error >>>>>>>>>>>>>>>>>>>>>>>>>>:",

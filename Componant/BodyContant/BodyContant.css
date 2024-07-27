@@ -8,8 +8,8 @@
   background-color: rgb(248, 242, 242);
 }
 
-.bodyContentContainerLeft {
-}
+/* .bodyContentContainerLeft {
+} */
 
 .latestNews {
   box-shadow: 0px 1px 2px 3px rgb(220, 222, 223);
@@ -99,7 +99,6 @@
   display: flex;
   align-items: center;
 }
-
 
 .topNewsHeading p span {
   color: #00b1cd;

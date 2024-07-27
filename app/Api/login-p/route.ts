@@ -3,8 +3,10 @@ import connectionDb from "../../../dbConnection-login/connectionDb";
 import login from "../../../models-login/post";
 import bcryptjs from "bcryptjs";
 import signUp from "../../../models-sign-up/post";
+import jwt from "jsonwebtoken";
+
 const dotenv = require("dotenv");
-// import jwt from "jsonwebtoken";
+
 dotenv.config();
 
 export async function POST(req: any) {
@@ -13,18 +15,25 @@ export async function POST(req: any) {
   try {
     await connectionDb();
     const { email, password } = body;
-    const userEmail = await signUp.findOne({ email });
-    const userPassword = await signUp.findOne({ password });
+    const userData = await signUp.findOne({ email });
 
-    if (userEmail === "" && password === "") {
-      return NextResponse.json({ error: "fill the form " });
+    if (email === "" && password === "") {
+      return NextResponse.json({ error: "Enter Email or Password " });
     }
 
-    if (!userEmail) {
+    if (email === "") {
+      return NextResponse.json({ error: "Enter Email  " });
+    }
+
+    if (password === "") {
+      return NextResponse.json({ error: "Enter Password  " });
+    }
+
+    if (!userData) {
       return NextResponse.json({ error: "User Does Not Exists " });
     }
 
-    const validPassword = await bcryptjs.compare(password, userEmail.password);
+    const validPassword = await bcryptjs.compare(password, userData.password);
 
     if (!validPassword) {
       return NextResponse.json({ error: "Check your Password" });
@@ -37,15 +46,27 @@ export async function POST(req: any) {
 
     await data.save();
 
-    // const tokenData: any = {
-    //   id: userEmail._id,
-    // };
+    const tokenData = {
+      id: data._id,
+    };
 
-    // const token = await jwt.verify(tokenData.id, "mysecretkeyisthi");
+    const token = await jwt.sign({ tokenData }, "mysecretkey");
 
-    //   console.log("login data >>>>>>>>>>>>>>>>>>>>>>>", data);
+    const response = NextResponse.json({
+      msg: "SuccessFully",
 
-    return NextResponse.json({ msg: "Succes" }, { status: 200 });
+      success: true,
+
+      token,
+    });
+
+    // Set cookies
+
+    response.cookies.set("token", token, { httpOnly: true });
+
+    if (response) {
+      return response;
+    }
   } catch (error) {
     console.log(
       "This error is a POST req error >>>>>>>>>>>>>>>>>>>>>>>>>>:",

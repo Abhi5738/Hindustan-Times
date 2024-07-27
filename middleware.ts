@@ -2,10 +2,19 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
-  const token = req.cookies.get("auth-token");
   const path = req.nextUrl.pathname;
 
-  const publicPaths = ["/SignUp", "/Login"];
+  console.log("middle token>", "Middle PAth", path);
+
+  // if (path === "/admin") {
+  //   return NextResponse.redirect(new URL("/", req.url));
+  // }
+
+  // const publicPaths = ["/SignUp", "/Login"];
+
+  // if (!token && !publicPaths) {
+  //   return NextResponse.redirect(new URL("/SignUp", req.url));
+  // }
 
   // const isPublicPath = publicPaths.some((publicPath) =>
   //   path.startsWith(publicPath)
@@ -22,14 +31,6 @@ export function middleware(req: NextRequest) {
   // return NextResponse.next();
 }
 
-// export const config = {
-//   matcher: ["/", "/Admin"],
-// };
-
-// if (!token && !publicPath) {
-//   return NextResponse.redirect(new URL("/SignUp", req.url));
-// }
-
-// if (token && publicPath) {
-//   return NextResponse.redirect(new URL("/", req.url));
-// }
+export const config = {
+  matcher: ["/"],
+};

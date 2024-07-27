@@ -1,7 +1,7 @@
 "use client";
 import "../../app/admin.css";
 import "../../app/login.css";
-import Link from "next/link";
+// import Link from "next/link";
 import { useState } from "react";
 const page = () => {
   const [formData, setFormData] = useState({

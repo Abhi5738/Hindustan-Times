@@ -1,17 +1,30 @@
 "use client";
+
 import "../../app/login.css";
+
 import Link from "next/link";
+
 import axios from "axios";
+
 import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
+
+import { redirect, useRouter } from "next/navigation";
+
 import { useEffect, useState } from "react";
-import { setCookie } from "cookies-next";
+
+import { useAuthProvider } from "../../Context/authProvider";
 
 const page = () => {
+  const { isLoggedIn, setIsLoggedIn }: any = useAuthProvider();
+
   const [buttonDisabled, setButtonDisabled] = useState(false);
+
   const [loading, setLoading] = useState(false);
+
   const router = useRouter();
-  const [error, setError] = useState("");
+
+  const [error, setMsg] = useState("");
+
   const [formData, setFormData] = useState({
     password: "",
     email: "",
@@ -23,26 +36,54 @@ const page = () => {
 
   const handleSubmit = async () => {
     try {
-      setCookie("loged", "true");
-      if (formData.email === "" && formData.password === "") {
-        setError("Check your email Or password");
-        return;
-        // router.push("/Login");
-      }
       setLoading(true);
+
       const response: any = await axios.post(
         "http://localhost:3000/Api/login-p",
         formData
       );
 
       if (response.data.error) {
-        setError(response.data.error);
-
-        setLoading(false);
+        setMsg(response.data.error);
 
         router.push("/Login");
-      } else {
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+
+        setTimeout(() => {
+          setMsg("");
+        }, 5000);
+
+        setFormData({
+          password: "",
+
+          email: "",
+        });
+      }
+
+      if (response.data.msg === "SuccessFully") {
+        localStorage.setItem("auth-token", response.data.token);
+
+        setIsLoggedIn(true);
+
+        setMsg(response.data.msg);
+
         router.push("/");
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+
+        setTimeout(() => {
+          setMsg("");
+        }, 2000);
+
+        setFormData({
+          password: "",
+          email: "",
+        });
       }
     } catch (error: any) {
       console.log("LogIn Faild", error);
@@ -87,9 +128,9 @@ const page = () => {
           </button>
 
           <div className="login-signup-already">
-            Create an account?
+            <b>Don't have an account?</b>
             <span>
-              <Link href={"/SignUp"}>Click here</Link>
+              <Link href={"/SignUp"}> Click here</Link>
             </span>
           </div>
 

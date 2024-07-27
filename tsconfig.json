@@ -27,6 +27,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/User/Profile/[Id]/page.tsx"
-, "middleware.ts"  ],
+, "middleware.ts", "Context/authProvider.tsx"  ],
   "exclude": ["node_modules"]
 }

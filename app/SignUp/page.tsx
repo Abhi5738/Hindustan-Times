@@ -5,13 +5,12 @@ import "../../app/login.css";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 
 const page = () => {
   const [select, setSelect] = useState();
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setMsg] = useState("");
   const router = useRouter();
   const [formData, setFormData] = useState({
     username: "",
@@ -24,8 +23,6 @@ const page = () => {
     setSelect(e.target.value);
 
     setFormData({ ...formData, role: e.target.value });
-
-    // console.log(formData);
   };
 
   const changeHandler = (e: any) => {
@@ -35,21 +32,16 @@ const page = () => {
   const handleSubmit = async () => {
     try {
       if (formData.email === "" && formData.password === "") {
-        setError("Check your email Or password");
+        setMsg("Check your email Or password");
 
         return;
-        // router.push("/Login");
       }
       const response = await axios.post(
         "http://localhost:3000/Api/sign-up-p",
 
         formData
       );
-      console.log("toknme>>>>>>>>>", response.data.token);
-      if (response) {
-        localStorage.setItem("auth-token", response.data.token);
-        Cookies.set("auth-token", response.data.token);
-      }
+
       setLoading(false);
 
       router.push("/Login");
@@ -79,7 +71,7 @@ const page = () => {
         <div className="login-signup-container">
           <p>{error}</p>
           <p>{loading ? "Procesing..." : "SignUp"}</p>
-          {/* <p>SignUp</p> */}
+
           <div className="login-signup-feilds">
             <input
               type="text"
@@ -113,9 +105,9 @@ const page = () => {
             <option value="user">user</option>
           </select>
           <div className="login-signup-already">
-            Already have an account?{" "}
+            <b>Already have an account?</b>
             <span>
-              <Link href={"/Login"}>Login here</Link>
+              <Link href={"/Login"}> Login here</Link>
             </span>
           </div>
 

@@ -1,6 +1,8 @@
+"use client";
+import { useEffect, useState } from "react";
 import "./Navbar.css";
 
-const handleNavbarApi = async () => {
+const handleNavbarData = async () => {
   const res = await fetch("http://localhost:3000/Api/navbar-g", {
     headers: {
       "content-type": "application/json",
@@ -12,13 +14,21 @@ const handleNavbarApi = async () => {
   return resPosts;
 };
 
-const Navbar = async () => {
-  const NavbarApi = await handleNavbarApi();
+const Navbar = () => {
+  const [navbarData, setNavbarData] = useState({ data: [] });
+
+  useEffect(() => {
+    (async () => {
+      const navbarData = await handleNavbarData();
+      setNavbarData(navbarData);
+    })();
+  }, []);
+
   return (
     <>
       <div className="navbarContainer">
         <ul>
-          {NavbarApi.data.map((item: any) => {
+          {navbarData.data.map((item: any) => {
             return <li className="navbarItem">{item.title}</li>;
           })}
         </ul>

@@ -10,7 +10,7 @@ const Header = () => {
 
   const logOut = async () => {
     try {
-      deleteCookie("loged")
+      deleteCookie("loged");
       const res = await axios.get("http://localhost:3000/Api/log-out-g");
 
       toast.success("LogOut Success");
@@ -35,9 +35,6 @@ const Header = () => {
         <div className="headerRight">
           <h1>Right</h1>
 
-          {/* <button>
-            <Link href={"/SignUp"}>SignUp</Link>
-          </button> */}
           <button onClick={logOut}>LogOut</button>
         </div>
       </div>

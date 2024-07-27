@@ -1,4 +1,4 @@
-
+"use client";
 import "./BodyContant.css";
 
 import allRightContant from "../Assets/RightContant";
@@ -9,6 +9,7 @@ import SmallCarts from "../SmallCarts/SmallCarts";
 import RightContant from "../RightContant/RightContant";
 import RightShopContant from "../RightShopContant/RightShopContant";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 // import { IonIcon } from "ionicons";
 
@@ -57,11 +58,25 @@ const handleAdminContantCenterDataApi = async () => {
   return resPost;
 };
 
-const BodyContant = async () => {
-  const LeftContantApi = await handleLeftContantApi();
-  const BigDataCardsApi = await handleCenterContantBigDataCardsApi();
-  const SmallDataCardsApi = await handleCenterContantSmallDataCardsApi();
-  const adminCenterDataApi = await handleAdminContantCenterDataApi();
+const BodyContant = () => {
+  const [leftContentApi, setLeftContentApi] = useState({ data: [] });
+  const [bigDataCardsApi, setBigDataCardsApi] = useState({ data: [] });
+  const [smallDataCardsApi, setSmallDataCardsApi] = useState({ data: [] });
+  const [adminCenterDataApi, setadminCenterDataApi] = useState({ data: [] });
+
+  useEffect(() => {
+    (async () => {
+      const leftContentApi = await handleLeftContantApi();
+      setLeftContentApi(leftContentApi);
+      const bigDataCardsApi = await handleCenterContantBigDataCardsApi();
+      setBigDataCardsApi(bigDataCardsApi);
+      const smallDataCardsApi = await handleCenterContantSmallDataCardsApi();
+      setSmallDataCardsApi(smallDataCardsApi);
+      const adminCenterDataApi = await handleAdminContantCenterDataApi();
+      setadminCenterDataApi(adminCenterDataApi);
+    })();
+  }, []);
+
   return (
     <>
       <div className="bodyContentContainer">
@@ -73,7 +88,7 @@ const BodyContant = async () => {
               </p>
             </div>
 
-            {LeftContantApi.data.slice(0, 4).map((item: any) => {
+            {leftContentApi.data.slice(0, 4).map((item: any) => {
               return (
                 <LeftContant
                   title={item.title}
@@ -99,7 +114,7 @@ const BodyContant = async () => {
               </p>
             </div>
             <div className="indiaNewsContent">
-              {LeftContantApi.data.slice(4, 8).map((item: any) => {
+              {leftContentApi.data.slice(4, 8).map((item: any) => {
                 return (
                   <LeftContant
                     title={item.title} // this line is new added in next js
@@ -131,13 +146,13 @@ const BodyContant = async () => {
             </p>
           </div>
           {/* Api data */}
-          {BigDataCardsApi.data.map((item: any) => {
+          {bigDataCardsApi.data.map((item: any) => {
             if (item.id == 1) {
               return <BigCarts title={item.title} image={item.image} />;
             }
           })}
 
-          {SmallDataCardsApi.data.slice(0, 4).map((item: any) => (
+          {smallDataCardsApi.data.slice(0, 4).map((item: any) => (
             <SmallCarts title={item.title} image={item.image} />
           ))}
 
@@ -147,13 +162,13 @@ const BodyContant = async () => {
             </p>
           </div>
 
-          {BigDataCardsApi.data.map((item: any) => {
+          {bigDataCardsApi.data.map((item: any) => {
             if (item.id == 2) {
               return <BigCarts title={item.title} image={item.image} />;
             }
           })}
 
-          {SmallDataCardsApi.data.slice(4, 8).map((item: any) => (
+          {smallDataCardsApi.data.slice(4, 8).map((item: any) => (
             <SmallCarts title={item.title} image={item.image} />
           ))}
 
@@ -163,13 +178,13 @@ const BodyContant = async () => {
             </p>
           </div>
 
-          {BigDataCardsApi.data.map((item: any) => {
+          {bigDataCardsApi.data.map((item: any) => {
             if (item.id == 3) {
               return <BigCarts title={item.title} image={item.image} />;
             }
           })}
 
-          {SmallDataCardsApi.data.slice(8, 12).map((item: any) => (
+          {smallDataCardsApi.data.slice(8, 12).map((item: any) => (
             <SmallCarts title={item.title} image={item.image} />
           ))}
 
